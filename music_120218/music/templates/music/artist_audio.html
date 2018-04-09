@@ -1,0 +1,9 @@
+{% extends "music/header.html" %}
+
+    {% block content %}
+        <h3>Audio artist's {{ artist.name }}</h3>
+            {% for audio in audios %}
+                {{ audio.title }}
+                <br>
+            {% endfor %}
+    {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{%  block content %}
+    </br></br>
+
+   <a href="{% url "add_new_artist" %}">Add new artist</a>
+
+{% for artist in artists %}
+
+    <li><a href="#">{{ artist.name }}</a></li>
+
+{% endfor %}
+{% endblock %}
+

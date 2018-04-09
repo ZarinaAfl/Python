@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>{{ post.user.username }}
+
+<marquee>Hello, ITIS!</marquee>
+{% for post in posts %}
+    <p><b>{{ post.user.username }}</b></p>
+    <p>{{ post.text }}</p>
+    <i>{{ post.date }}</i>
+    <p>ORIGIN: {{ post.src.source.text }} by {{ post.src.source.user.username }}</p>
+
+    <div style="display: flex">
+
+
+        <a href="add_like/{{ post.id }} ">
+            <img src="{% static 'wall/like.png' %}" width="25" height="25">
+        </a>
+        <p>Likes: {{ post.likes }}</p>
+
+        <form style="padding-left: 10px" method="post" action="{%  url "make_repost"  post.id %}">
+        {% csrf_token %}
+            <input type="submit" value="repost">
+        </form>
+    </div>
+
+
+{% endfor %}
+</body>
+</html>

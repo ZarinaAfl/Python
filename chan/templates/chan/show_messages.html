@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h2>Hello, chan!</h2>
+
+<form action="send/" method="post">
+    {% csrf_token %}
+    <textarea name="message" cols="50" rows="10"></textarea><br>
+
+    <input type="submit" value="Отправить">
+</form>
+
+
+{% for m in messages %}
+    <div id="message{{ m.id }}">
+        <p>#{{ m.id }}. Pub on {{ m.pub_date }}</p>
+        {% if m.reply_to %}
+            <p><a href="#message{{ m.reply_to.id }}">&gt;&gt;&gt; {{ m.reply_to.id }} </a></p>
+        {% endif %}
+        <p>{{ m.text }}</p>
+        <a href="reply/{{ m.id }}">Ответить</a>
+        <hr/>
+    </div>
+{% endfor %}
+<h6>&copy; ITIS 2017</h6>
+</body>
+</html>

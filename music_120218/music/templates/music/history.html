@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{%  block content %}
+    </br></br>
+
+    {% for record in history %}
+        <li>{{ record.user.username }} add {{ record.artist }} at {{ record.time }} </li>
+        <li><a href="#">{{ artist.name }}</a></li>
+
+    {% endfor %}
+{% endblock %}
